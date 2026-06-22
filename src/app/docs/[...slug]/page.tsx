@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { MarkdownRenderer } from "@/components/Markdown";
 import { ARTICLES, DocArticle } from "@/data/docs";
-import { Clock, Edit3, Globe, ArrowLeft, ArrowRight, CornerDownRight } from "lucide-react";
+import { Clock, Edit3, Globe, ArrowLeft, ArrowRight, CornerDownRight, ChevronRight } from "lucide-react";
 
 interface PageProps {
   params: Promise<{
@@ -12,8 +12,17 @@ interface PageProps {
   }>;
 }
 
+export async function generateStaticParams() {
+  return ARTICLES.map((article) => ({
+    slug: article.slug.split("/"),
+  }));
+}
+
 export default async function DocPage({ params }: PageProps) {
   const { slug } = await params;
+  if (!slug || !Array.isArray(slug) || slug.length === 0) {
+    return notFound();
+  }
   const targetSlug = slug.join("/");
 
   const article = ARTICLES.find((a) => a.slug === targetSlug);
@@ -134,5 +143,3 @@ export default async function DocPage({ params }: PageProps) {
 function ChevronRightIcon() {
   return <ChevronRight className="h-3 w-3 text-muted-foreground" />;
 }
-
-import { ChevronRight } from "lucide-react";
