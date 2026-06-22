@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* Main Section */}
       <main className="max-w-5xl mx-auto px-4 sm:px-8 py-12 space-y-12">
-        
+
         {/* Hero Section */}
         <section className="text-center max-w-2xl mx-auto space-y-6 py-6">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1 text-[11px] font-bold text-coral">
@@ -245,9 +245,9 @@ export default function Home() {
               <h3 className="font-display font-bold text-base text-foreground">Still need help?</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {[
-                  { label: "Contact Support", icon: HelpCircle, url: "mailto:support@classhost.app" },
-                  { label: "Community Forum", icon: MessageSquare, url: "https://github.com/classhost/docs/discussions" },
-                  { label: "Report Issue", icon: Bug, url: "https://github.com/classhost/docs/issues" }
+                  { label: "Contact Support", icon: HelpCircle, url: "mailto:eldrexdelosreyesbula@gmail.com" },
+                  { label: "Community Forum", icon: MessageSquare, url: "https://github.com/EldrexDelosReyesBula/ClassHost-Docs/discussions" },
+                  { label: "Report Issue", icon: Bug, url: "https://github.com/EldrexDelosReyesBula/ClassHost-Docs/issues" }
                 ].map((item) => {
                   const Icon = item.icon;
                   return (
