@@ -43,11 +43,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-foreground">
+    <div className="min-h-screen bg-transparent text-foreground">
       {/* Premium Sticky Header */}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 px-4 sm:px-8 py-3.5 backdrop-blur-xl flex items-center justify-between">
+      <header className="sticky top-0 z-40 border-b border-border bg-background/80 px-4 sm:px-8 py-3.5 backdrop-blur-xl flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <span className="font-display text-lg font-black tracking-tight text-foreground">
+          <span className="font-display text-lg font-extrabold tracking-tight text-foreground">
             ClassHost <span className="text-coral">Docs</span>
           </span>
         </Link>
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1 text-[11px] font-bold text-coral">
             ClassHost Support Hub
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-tight text-foreground">
+          <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-foreground">
             ClassHost Docs
           </h1>
           <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
@@ -86,12 +86,12 @@ export default function Home() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search all documentation... Try: 'ZIP', 'privacy', 'remix'"
-              className="w-full rounded-2xl border-2 border-border/80 bg-background pl-11 pr-10 py-3.5 text-sm sm:text-base outline-none focus:border-coral transition shadow-soft"
+              className="w-full rounded-xl border border-border bg-background/60 hover:bg-background focus:bg-background pl-11 pr-10 py-3 text-sm sm:text-base outline-none focus:border-coral focus:ring-1 focus:ring-coral/20 transition shadow-soft"
             />
             {query && (
               <button
                 onClick={() => setQuery("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-coral hover:underline"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-coral hover:underline cursor-pointer"
               >
                 Clear
               </button>
@@ -106,7 +106,7 @@ export default function Home() {
               Search Results ({searchResults.length})
             </h2>
             {searchResults.length > 0 ? (
-              <div className="divide-y divide-border border border-border rounded-3xl bg-card shadow-soft overflow-hidden">
+              <div className="divide-y divide-border border border-border rounded-xl bg-card shadow-soft overflow-hidden">
                 {searchResults.map((art) => (
                   <Link
                     key={art.slug}
@@ -114,7 +114,7 @@ export default function Home() {
                     className="block p-4 hover:bg-secondary/40 transition group"
                   >
                     <div className="flex items-center justify-between">
-                      <div className="font-semibold text-sm sm:text-base text-foreground group-hover:text-coral transition">
+                      <div className="font-semibold text-sm sm:text-base text-foreground group-hover:text-coral transition font-display">
                         {art.title}
                       </div>
                       <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-secondary px-2 py-0.5 rounded-md">
@@ -128,7 +128,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 border border-dashed border-border rounded-3xl bg-card">
+              <div className="text-center py-12 border border-dashed border-border rounded-xl bg-card">
                 <HelpCircle className="h-10 w-10 text-muted-foreground/40 mx-auto mb-2" />
                 <p className="font-semibold text-sm text-foreground">No matches found</p>
                 <p className="text-xs text-muted-foreground mt-1">Try another search query.</p>
@@ -148,7 +148,7 @@ export default function Home() {
                 <Link
                   key={lnk.label}
                   href={lnk.url}
-                  className="rounded-2xl border border-border bg-card p-4 text-center shadow-soft hover:border-coral/60 hover:bg-secondary/20 transition group"
+                  className="rounded-xl border border-border bg-card p-4 text-center shadow-soft hover:border-coral/50 hover:bg-secondary/30 transition group"
                 >
                   <span className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-coral transition">
                     {lnk.label}
@@ -159,7 +159,7 @@ export default function Home() {
 
             {/* Categories Grid */}
             <section className="space-y-4">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground font-display">
                 📚 Browse by Category
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -170,11 +170,11 @@ export default function Home() {
                   return (
                     <div
                       key={cat.slug}
-                      className="rounded-3xl border border-border bg-card p-6 shadow-card hover:-translate-y-0.5 transition flex flex-col justify-between"
+                      className="rounded-xl border border-border bg-card p-6 shadow-soft hover:shadow-card hover:-translate-y-0.5 transition flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-center gap-3">
-                          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-secondary border border-border text-coral">
+                          <div className="grid h-10 w-10 place-items-center rounded-xl bg-secondary border border-border text-coral">
                             {getIcon(cat.icon, "h-5 w-5")}
                           </div>
                           <div>
@@ -191,12 +191,12 @@ export default function Home() {
                         </p>
                       </div>
 
-                      <div className="mt-6 border-t border-border/40 pt-4 space-y-2">
+                      <div className="mt-6 border-t border-border/60 pt-4 space-y-2">
                         {items.slice(0, 3).map((a) => (
                           <Link
                             key={a.slug}
                             href={`/docs/${a.slug}`}
-                            className="flex items-center gap-1.5 text-xs font-semibold text-foreground/80 hover:text-coral transition"
+                            className="flex items-center gap-1.5 text-xs font-semibold text-foreground/80 hover:text-coral transition font-display"
                           >
                             <CornerDownRight className="h-3 w-3 text-coral/60 shrink-0" />
                             {a.title}
@@ -218,9 +218,9 @@ export default function Home() {
             </section>
 
             {/* Filipino Translation Prompt */}
-            <section className="rounded-3xl bg-gradient-to-r from-violet/20 to-coral/10 border border-coral/20 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <section className="rounded-xl bg-gradient-to-br from-violet/5 to-coral/5 dark:from-violet/10 dark:to-coral/10 border border-border hover:border-coral/20 hover:shadow-soft transition-all duration-300 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 relative overflow-hidden">
               <div className="flex items-center gap-3.5">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary border border-border text-coral shrink-0">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary border border-border text-coral shrink-0">
                   <Flag className="h-6 w-6" />
                 </div>
                 <div>
@@ -234,7 +234,7 @@ export default function Home() {
               </div>
               <Link
                 href="/docs/filipino/mga-gabay/ano-ang-classhost"
-                className="rounded-full bg-coral px-5 py-2.5 text-xs font-bold text-white shadow-pop hover:opacity-90 transition shrink-0"
+                className="rounded-full bg-coral px-5 py-2.5 text-xs font-bold text-white shadow-soft hover:opacity-90 hover:shadow-pop transition shrink-0"
               >
                 Tingnan sa Filipino →
               </Link>
@@ -256,9 +256,9 @@ export default function Home() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground/80 hover:border-coral/60 hover:text-coral transition shadow-soft"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground/80 hover:border-coral/60 hover:text-coral transition shadow-soft cursor-pointer"
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon className="h-4 w-4 text-coral" />
                       {item.label}
                     </a>
                   );

@@ -29,14 +29,14 @@ export default async function DocPage({ params }: PageProps) {
   const nextArticle = curIdx < categoryArticles.length - 1 ? categoryArticles[curIdx + 1] : null;
 
   return (
-    <div className="flex min-h-screen flex-col bg-background lg:flex-row">
+    <div className="flex min-h-screen flex-col bg-transparent lg:flex-row">
       <Sidebar />
 
       {/* Main Container */}
-      <main className="flex-1 px-4 py-8 sm:px-8 lg:px-12 max-w-4xl">
+      <main className="flex-1 px-4 py-8 sm:px-8 lg:px-12 xl:px-16 w-full max-w-4xl lg:max-w-3xl xl:max-w-4xl">
         <div className="space-y-6">
           {/* Breadcrumbs */}
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider font-display">
             <Link href="/" className="hover:text-foreground transition">Home</Link>
             <ChevronRightIcon />
             <span className="hover:text-foreground transition">{article.category}</span>
@@ -55,7 +55,7 @@ export default async function DocPage({ params }: PageProps) {
 
             <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-muted-foreground pt-2">
               <span className="flex items-center gap-1">
-                <Clock className="h-3.5 w-3.5" />
+                <Clock className="h-3.5 w-3.5 text-coral/80" />
                 Last updated: {article.lastUpdated}
               </span>
 
@@ -81,9 +81,9 @@ export default async function DocPage({ params }: PageProps) {
             {prevArticle ? (
               <Link
                 href={`/docs/${prevArticle.slug}`}
-                className="group flex flex-col gap-1.5 rounded-2xl border border-border bg-card p-4 hover:border-coral/60 transition text-left"
+                className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-4 hover:border-coral/50 hover:bg-secondary/20 transition text-left"
               >
-                <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1 font-display">
                   <ArrowLeft className="h-3 w-3 group-hover:-translate-x-0.5 transition-transform" /> Previous
                 </span>
                 <span className="text-sm font-semibold text-foreground group-hover:text-coral transition truncate">
@@ -97,9 +97,9 @@ export default async function DocPage({ params }: PageProps) {
             {nextArticle ? (
               <Link
                 href={`/docs/${nextArticle.slug}`}
-                className="group flex flex-col gap-1.5 rounded-2xl border border-border bg-card p-4 hover:border-coral/60 transition text-right"
+                className="group flex flex-col gap-1.5 rounded-xl border border-border bg-card p-4 hover:border-coral/50 hover:bg-secondary/20 transition text-right"
               >
-                <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground flex items-center justify-end gap-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground flex items-center justify-end gap-1 font-display">
                   Next <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                 </span>
                 <span className="text-sm font-semibold text-foreground group-hover:text-coral transition truncate">
@@ -114,10 +114,10 @@ export default async function DocPage({ params }: PageProps) {
           {/* GitHub edit metadata */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-muted-foreground border-t border-border/40 pt-6 mt-8">
             <a
-              href={`https://github.com/classhost/docs/edit/main/content/${article.slug}.mdx`}
+              href={`https://github.com/EldrexDelosReyesBula/ClassHost-Docs/edit/main/content/${article.slug}.mdx`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:text-foreground transition hover:underline"
+              className="flex items-center gap-1 hover:text-foreground transition hover:underline cursor-pointer"
             >
               <Edit3 className="h-3.5 w-3.5" />
               Edit this page on GitHub
@@ -127,6 +127,7 @@ export default async function DocPage({ params }: PageProps) {
         </div>
       </main>
     </div>
+
   );
 }
 
